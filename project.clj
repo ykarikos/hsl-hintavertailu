@@ -18,19 +18,19 @@
    [:cljsbuild :builds :app :compiler :output-dir]
    [:cljsbuild :builds :app :compiler :output-to]]
 
-  :resource-paths ["public"]
+  :resource-paths ["docs"]
 
   :figwheel {:http-server-root "."
              :nrepl-port 7002
              :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"]
-             :css-dirs ["public/css"]}
+             :css-dirs ["docs/css"]}
 
   :cljsbuild {:builds {:app
                        {:source-paths ["src" "env/dev/cljs"]
                         :compiler
                         {:main "hsl-laskuri.dev"
-                         :output-to "public/js/app.js"
-                         :output-dir "public/js/out"
+                         :output-to "docs/js/app.js"
+                         :output-dir "docs/js/out"
                          :asset-path   "js/out"
                          :source-map true
                          :optimizations :none
@@ -41,8 +41,8 @@
                        :release
                        {:source-paths ["src" "env/prod/cljs"]
                         :compiler
-                        {:output-to "public/js/app.js"
-                         :output-dir "public/js/release"
+                        {:output-to "docs/js/app.js"
+                         :output-dir "docs/js/release"
                          :asset-path   "js/out"
                          :optimizations :advanced
                          :pretty-print false}}}}

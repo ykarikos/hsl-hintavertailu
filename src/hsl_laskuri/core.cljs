@@ -11,23 +11,34 @@
 (def extra-day-price
   1.63)
 
+(def single-price
+  2.2)
+
 (def fortnight
   14)
 
 (def price-data
-  (r/atom {:days fortnight :price fortnight-price}))
+  (r/atom {:travel-days 10
+           :days fortnight
+           :season-price fortnight-price}))
 
 (defn round [n]
   (/ (Math/round (* n 100)) 100))
 
-(defn calc-price [days]
+(defn calc-season-price [days]
   (if (<= days fortnight)
     fortnight-price
     (round (+ fortnight-price (* (- days fortnight) extra-day-price)))))
 
+(defn calc-single-price [days]
+  (round (* 2 days single-price)))
+
+
 (defn calc-price-data []
-  (let [{:keys [days] :as data} @price-data]
-    (assoc data :price (calc-price days))))
+  (let [{:keys [days travel-days] :as data} @price-data]
+    (assoc data
+           :season-price (calc-season-price days)
+           :single-price (calc-single-price travel-days))))
 
 (defn slider [param value min max]
   [:input {:type "range" :value value :min min :max max
@@ -36,12 +47,20 @@
                         (swap! price-data assoc param (.. e -target -value)))}])
 
 (defn home-page []
-  (let [{:keys [days price]} (calc-price-data)]
+  (let [{:keys [travel-days days season-price single-price]} (calc-price-data)]
     [:div
-     [:h1 "HSL-hintalaskuri"]
+     [:h1 "HSL:n kausi- ja kertalipun hintavertailu"]
      [:div "Voimassaoloaika " (int days) " päivää"
-       [slider :days days 14 366]]
-     [:div "Hinta: " price " €"]]))
+      [slider :days days 14 366]]
+     [:div "Edestakaisia matkoja " (int travel-days) " päivänä"
+      [slider :travel-days travel-days 1 366]]
+     [:div "Kertalippujen hinta: " season-price " €"]
+     [:div "Yksittäislippujen hinta: " single-price " €"]
+     [:div.conclusion
+           (if (> single-price season-price)
+             "Kausilippu"
+             "Kertalippu")
+           " on halvempi!"]]))
 
 
 ;; -------------------------

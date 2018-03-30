@@ -1,44 +1,14 @@
 (ns hsl-laskuri.core
     (:require
-      [reagent.core :as r]))
+      [reagent.core :as r]
+      [hsl-laskuri.price-calculator :as c]))
 
 ;; -------------------------
 ;; Views
 
-(def fortnight-price
-  28.7)
-
-(def extra-day-price
-  1.63)
-
-(def single-price
-  2.2)
-
-(def fortnight
-  14)
-
 (def price-data
   (r/atom {:travel-days 10
-           :days fortnight
-           :season-price fortnight-price}))
-
-(defn round [n]
-  (/ (Math/round (* n 100)) 100))
-
-(defn calc-season-price [days]
-  (if (<= days fortnight)
-    fortnight-price
-    (round (+ fortnight-price (* (- days fortnight) extra-day-price)))))
-
-(defn calc-single-price [days]
-  (round (* 2 days single-price)))
-
-
-(defn calc-price-data []
-  (let [{:keys [days travel-days] :as data} @price-data]
-    (assoc data
-           :season-price (calc-season-price days)
-           :single-price (calc-single-price travel-days))))
+           :days 14}))
 
 (defn slider [param value min max]
   [:input {:type "range" :value value :min min :max max
@@ -47,7 +17,8 @@
                         (swap! price-data assoc param (.. e -target -value)))}])
 
 (defn home-page []
-  (let [{:keys [travel-days days season-price single-price]} (calc-price-data)]
+  (let [{:keys [travel-days days season-price single-price]}
+               (c/calc-price-data @price-data)]
     [:div
      [:h1 "HSL:n kausi- ja kertalipun hintavertailu"]
      [:div "Voimassaoloaika " (int days) " päivää"

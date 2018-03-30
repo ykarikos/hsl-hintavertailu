@@ -1,7 +1,8 @@
 (ns hsl-laskuri.core
     (:require
       [reagent.core :as r]
-      [hsl-laskuri.price-calculator :as c]))
+      [hsl-laskuri.price-calculator :as c]
+      [goog.string.format]))
 
 ;; -------------------------
 ;; Views
@@ -16,22 +17,26 @@
            :on-change (fn [e]
                         (swap! price-data assoc param (.. e -target -value)))}])
 
+(defn format-price [n]
+  (clojure.string/replace
+    (goog.string.format "%.2f" n)
+    "." ","))
+
 (defn home-page []
   (let [{:keys [travel-days days season-price single-price]}
-               (c/calc-price-data @price-data)]
+        (c/calc-price-data @price-data)]
     [:div
      [:h1 "HSL:n kausi- ja kertalipun hintavertailu"]
      [:div "Voimassaoloaika " (int days) " päivää"
       [slider :days days 14 366]]
      [:div "Edestakaisia matkoja " (int travel-days) " päivänä"
       [slider :travel-days travel-days 1 366]]
-     [:div "Kertalippujen hinta: " season-price " €"]
-     [:div "Yksittäislippujen hinta: " single-price " €"]
-     [:div.conclusion
-           (if (> single-price season-price)
+     [:div "Kertalippujen hinta: " (format-price season-price) " €"]
+     [:div "Yksittäislippujen hinta: " (format-price single-price) " €"]
+     [:h2 (if (> single-price season-price)
              "Kausilippu"
              "Kertalippu")
-           " on halvempi!"]]))
+          " on halvempi!"]]))
 
 
 ;; -------------------------

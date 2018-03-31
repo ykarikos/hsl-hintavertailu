@@ -160,6 +160,7 @@ cljs.core.cst$sym$sb = new cljs.core.Symbol(null,"sb","sb",-1249746442,null);
 cljs.core.cst$sym$seed = new cljs.core.Symbol(null,"seed","seed",1709144854,null);
 cljs.core.cst$sym$prev_DASH_seed = new cljs.core.Symbol(null,"prev-seed","prev-seed",2126381367,null);
 cljs.core.cst$kw$display_DASH_name = new cljs.core.Keyword(null,"display-name","display-name",694513143);
+cljs.core.cst$kw$span$price = new cljs.core.Keyword(null,"span.price","span.price",1400612599);
 cljs.core.cst$kw$ticket_DASH_type = new cljs.core.Keyword(null,"ticket-type","ticket-type",-847802505);
 cljs.core.cst$sym$_hash = new cljs.core.Symbol(null,"_hash","_hash",-2130838312,null);
 cljs.core.cst$kw$on_DASH_dispose = new cljs.core.Keyword(null,"on-dispose","on-dispose",2105306360);

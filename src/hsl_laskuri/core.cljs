@@ -46,8 +46,10 @@
       [slider :days days 14 366]]
      [:div "Edestakaisia matkoja " (int travel-days) " päivänä"
       [slider :travel-days travel-days 1 366]]
-     [:div "Kertalippujen hinta: " (format-price season-price) " €"]
-     [:div "Yksittäislippujen hinta: " (format-price single-price) " €"]
+     [:div "Kausilipun hinta: "
+      [:span.price (format-price season-price) " €"]]
+     [:div "Yksittäislippujen hinta: "
+      [:span.price (format-price single-price) " €"]]
      [:h2 (if (> single-price season-price)
             "Kausilippu"
             "Kertalippu")

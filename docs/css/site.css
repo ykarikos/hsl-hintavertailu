@@ -2,22 +2,34 @@ body {
   font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
   max-width: 600px;
   margin: 0 auto;
+  padding: 0.5em;
   -webkit-font-smoothing: antialiased;
   font-size: 1.125em;
   color: #333;
-  line-height: 1.5em;
 }
 
 div {
-  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#app {
+  background: #dfedf5;
+  padding: 1.5em;
+  border-radius: 10px;
+}
+
+.price {
+  font-weight: bold;
 }
 
 h1, h2, h3 {
-  color: #000;
+  color: #222;
+  font-weight: bold;
+  font-family: 'Varela Round', sans-serif;
 }
+
 h1 {
   font-size: 2.5em;
-  line-height: 1em;
 }
 
 h2 {

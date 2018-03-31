@@ -1,6 +1,6 @@
-(defproject hsl-laskuri "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+(defproject hsl-laskuri "1.0"
+  :description "Compare ticket prices of Helsinki Region Transport (HSL)"
+  :url "https://ykarikos.github.io/hsl-hintavertailu/"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 

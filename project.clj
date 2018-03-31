@@ -1,8 +1,8 @@
 (defproject hsl-laskuri "1.0"
   :description "Compare ticket prices of Helsinki Region Transport (HSL)"
   :url "https://ykarikos.github.io/hsl-hintavertailu/"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "MIT"
+            :url "https://github.com/ykarikos/hsl-hintavertailu/blob/master/LICENSE"}
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]

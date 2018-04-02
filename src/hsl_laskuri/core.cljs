@@ -43,9 +43,9 @@
       " "
       [radio "Seutu" "type" :regional ticket-type]]
      [:div "Voimassaoloaika " (int days) " päivää"
-      [slider :days days 14 366]]
+      [slider :days days 14 150]]
      [:div "Edestakaisia matkoja " (int travel-days) " päivänä"
-      [slider :travel-days travel-days 1 366]]
+      [slider :travel-days travel-days 1 150]]
      [:div "Kausilipun hinta: "
       [:span.price (format-price season-price) " €"]]
      [:div "Yksittäislippujen hinta: "

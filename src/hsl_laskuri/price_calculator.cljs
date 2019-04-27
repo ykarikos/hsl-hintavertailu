@@ -1,29 +1,25 @@
-(ns hsl-laskuri.price-calculator)
-
-(def fortnight-price
-  {:one-zone 28.7
-   :regional 55.7})
-
-(def extra-day-price
-  {:one-zone 1.63
-   :regional 3.18})
-
-(def single-price
-  {:one-zone 2.2
-   :regional 4.2})
-
-(def fortnight
-  14)
+(ns hsl-laskuri.price-calculator
+  (:require
+   [hsl-laskuri.data :refer
+    [fortnight-price month-price extra-day-price-until-month extra-day-price-over-month single-price fortnight month]]))
 
 (defn- round [n]
   (/ (Math/round (* n 100)) 100))
 
 (defn- calc-season-price [days ticket-type]
   (let [f-price (ticket-type fortnight-price)
-        e-price (ticket-type extra-day-price)]
-    (if (<= days fortnight)
-      f-price
-      (round (+ f-price (* (- days fortnight) e-price))))))
+        m-price (ticket-type month-price)
+        e-price-until-month (ticket-type extra-day-price-until-month)
+        e-price-over-month (ticket-type extra-day-price-over-month)]
+    (cond
+      (<= days fortnight) f-price
+      (= days month) m-price
+
+      (< days month)
+      (round (+ f-price (* (- days fortnight) e-price-until-month)))
+
+      :else
+      (round (+ m-price (* (- days month) e-price-over-month))))))
 
 (defn- calc-single-price [days ticket-type]
   (round (* 2 days (ticket-type single-price))))

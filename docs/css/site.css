@@ -58,6 +58,10 @@ a:hover {
   font-weight: bold;
 }
 
+footer img {
+  width: 18px;
+}
+
 
 /* Range input from http://danielstern.ca/range.css/ */
 

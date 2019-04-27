@@ -29,18 +29,23 @@
   (let [{:keys [travel-days days season-price single-price]}
         (c/calc-price-data @price-data)]
     [:div
-     [:div "Vyöhyke: "
-      [:select
-       {:on-change
-         (fn [e] (swap! price-data assoc :ticket-type
-                        (keyword (.. e -target -value))))}
-       (for [[zone-key zone-name] travel-zones]
-          ^{:key zone-key} [:option {:value zone-key}
-                            zone-name])]]
-     [:div "Voimassaoloaika " (int days) " päivää"
-      [slider :days days 14 150]]
-     [:div "Edestakaisia matkoja " (int travel-days) " päivänä"
-      [slider :travel-days travel-days 1 150]]
+     [:div
+      [:label "Vyöhyke: "
+       [:select
+        {:on-change
+          (fn [e] (swap! price-data assoc :ticket-type
+                         (keyword (.. e -target -value))))}
+        (for [[zone-key zone-name] travel-zones]
+           ^{:key zone-key}
+            [:option {:value zone-key
+                      :label zone-name}
+             zone-name])]]]
+     [:div
+      [:label "Voimassaoloaika " (int days) " päivää"
+       [slider :days days 14 150]]]
+     [:div
+      [:label "Edestakaisia matkoja " (int travel-days) " päivänä"
+       [slider :travel-days travel-days 1 150]]]
      [:div "Kausilipun hinta: "
       [:span.price (format-price season-price) " €"]]
      [:div "Yksittäislippujen hinta: "

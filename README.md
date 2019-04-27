@@ -1,6 +1,6 @@
 # HSL:n kausi- ja kertalipun hintavertailu
 
-Compare ticket prices of [Helsinki Region Transport (HSL)](https://www.hsl.fi/en). Use this service at https://ykarikos.github.io/hsl-hintavertailu/
+Compare ticket prices of [Helsinki Region Transport (HSL)](https://www.hsl.fi/en). Use this service at https://hsl-laskuri.peruna.fi/
 
 Ticket prices for 2019 https://www.hsl.fi/sites/default/files/uploads/lippujen_hinnat_uudet_vyohykkeet_2019.pdf for the new A-B-C-D zones.
 

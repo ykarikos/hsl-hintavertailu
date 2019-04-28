@@ -57,7 +57,7 @@
       (-> (- single-price season-price)
           Math/abs
           format-price)
-      " € halvempi!"]]))
+      " € halvempi!"]]))
 
 
 ;; -------------------------

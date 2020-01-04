@@ -1,10 +1,11 @@
 # HSL:n kausi- ja kertalipun hintavertailu
 
-Compare ticket prices of [Helsinki Region Transport (HSL)](https://www.hsl.fi/en). Use this service at https://hsl-laskuri.peruna.fi/ or dat://43497eecc2480b6df161605c58e73958e4243dcc3cb450ef9a5cd5bbfda14bfc/
+Compare ticket prices of [Helsinki Region Transport (HSL)](https://www.hsl.fi/en).
+Use this service at https://hsl-laskuri.peruna.fi/ or
+dat://95966ec9b4063c032117fe6f877e89173c53d6df8f32216d7cf01e0a80054cd4/ 
 
-Ticket prices for 2020 
+Ticket prices for 2020: 
 https://www.hsl.fi/sites/default/files/uploads/hsl_hinnat_01012020_h.pdf
-for the new A-B-C-D zones.
 
 ## Development mode
 

@@ -58,8 +58,29 @@ a:hover {
   font-weight: bold;
 }
 
-footer img {
-  width: 18px;
+footer {
+    position: relative;
+}
+
+footer .logos {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+footer .logos img {
+  width: 24px;
+}
+
+footer ul, footer div {
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    margin-top: 5px;
+    margin-right: 10px;
+    list-style: none;
 }
 
 
